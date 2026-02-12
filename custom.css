@@ -1,6 +1,7 @@
 body{
-	background: #100000 url("img/EchoDate5.png") no-repeat center bottom / min(1200px, 100%) auto fixed !important;
-	height: 100%;
+	background-color: #100000!important;
+	margin: 0;
+	padding: 0;
 }
 
 .bg{
@@ -9,7 +10,12 @@ body{
 }
 
 .bgh{
-	background: #100000 url("img/EchoDate5.png") no-repeat center bottom / min(1200px, 100%) auto fixed !important;
+	position: fixed;
+	background-color: #100000!important;
+	inset: 0;
+	background: url("img/EchoDate5.png") no-repeat center bottom;
+	background-size: min(1200px, 100%) auto;
+	z-index: -1;
 }
 
 a{
@@ -67,6 +73,13 @@ a{
 	justify-content: center; 
 	align-items: center; 
 	gap: 1rem;	
+	opacity: 0;                 
+	transition: opacity 2s ease; 
+}
+
+
+.content.visible {
+	opacity: 1;                 
 }
 
 #home-content {
@@ -90,6 +103,11 @@ a{
 
 #contact-content {
     min-height: 100vh;
+}
+
+.wrapper{
+    width: 100%;
+    height: 56px;
 }
 
 .ww5{
@@ -256,5 +274,9 @@ a{
   #music-content{
 	margin-top: 80px;
 	margin-bottom: 80px;
+  }
+  
+  .content{
+	gap: 3rem;
   }
 }

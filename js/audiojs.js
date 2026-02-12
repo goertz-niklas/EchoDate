@@ -95,51 +95,26 @@ function getTimeCodeFromNum(num) {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+	const sections = document.querySelectorAll(".content");
 
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if(entry.isIntersecting){
+				entry.target.classList.add("visible");
+			} else {
+				entry.target.classList.remove("visible");
+			}
+		});
+	}, {
+		threshold: 0.1
+	});
 
+	sections.forEach(section => observer.observe(section));
 
-
-const home = document.getElementById("home");
-const music = document.getElementById("music");
-const about = document.getElementById("about");
-const contact = document.getElementById("contact");
-
-const homeContent = document.getElementById("home-content");
-const musicContent = document.getElementById("music-content");
-const aboutContent = document.getElementById("about-content");
-const contactContent = document.getElementById("contact-content");
-
-home.addEventListener("click", () => {
-	homeContent.style.display = "flex";
-	musicContent.style.display = "none";
-	aboutContent.style.display = "none";
-	contactContent.style.display = "none";
+	sections.forEach(section => {
+		if(section.getBoundingClientRect().top < window.innerHeight){
+			section.classList.add("visible");
+		}
+	});
 });
-
-music.addEventListener("click", () => {
-	homeContent.style.display = "none";
-	musicContent.style.display = "flex";
-	aboutContent.style.display = "none";
-	contactContent.style.display = "none";
-});
-
-about.addEventListener("click", () => {
-	homeContent.style.display = "none";
-	musicContent.style.display = "none";
-	aboutContent.style.display = "flex";
-	contactContent.style.display = "none";
-});
-
-contact.addEventListener("click", () => {
-	homeContent.style.display = "none";
-	musicContent.style.display = "none";
-	aboutContent.style.display = "none";
-	contactContent.style.display = "flex";
-});
-
-
-homeContent.style.display = "flex";
-musicContent.style.display = "none";
-aboutContent.style.display = "none";
-contactContent.style.display = "none";
-
