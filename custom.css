@@ -1,7 +1,8 @@
 body{
-	background-color: #100000!important;
 	margin: 0;
 	padding: 0;
+	background: #020024;
+	background: linear-gradient(0deg, rgb(11 0 0) 0%, rgb(33 0 0) 100%);
 }
 
 .bg{
@@ -11,10 +12,10 @@ body{
 
 .bgh{
 	position: fixed;
-	background-color: #100000!important;
+	/*background-color: #100000!important;*/
 	inset: 0;
-	background: url("img/EchoDate5.png") no-repeat center bottom;
-	background-size: min(1200px, 100%) auto;
+	background: url("img/EchoDate6.png") no-repeat center bottom;
+	background-size: min(800px, 100%) auto;
 	z-index: -1;
 }
 
@@ -28,6 +29,7 @@ a{
 	gap: 16px;
 	background: white;
 	width: 300px;
+	height: 110px;
 }
 
 .contact-form{
@@ -134,7 +136,7 @@ a{
 	background-image: url("img/cover3.png");
 }
 
-.audio-player {
+.player {
 	height: 50px;
 	width: 300px;
 	font-family: arial;

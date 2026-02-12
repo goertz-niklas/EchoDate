@@ -1,120 +1,95 @@
-// Possible improvements:
-// - Change timeline and volume slider into input sliders, reskinned
-// - Change into Vue or React component
-// - Be able to grab a custom title instead of "Music Song"
-// - Hover over sliders to see preview of timestamp/volume change
-
-const audioPlayer = document.querySelector(".audio-player");
-const audio = new Audio(
-  "mp3/NLT.mp3"
-);
-//credit for song: Adrian kreativaweb@gmail.com
-
-console.dir(audio);
-
-audio.addEventListener(
-  "loadeddata",
-  () => {
-    audioPlayer.querySelector(".time .length").textContent = getTimeCodeFromNum(
-      audio.duration
-    );
-    audio.volume = .75;
-  },
-  false
-);
-
-//click on timeline to skip around
-const timeline = audioPlayer.querySelector(".timeline");
-timeline.addEventListener("click", e => {
-  const timelineWidth = window.getComputedStyle(timeline).width;
-  const timeToSeek = e.offsetX / parseInt(timelineWidth) * audio.duration;
-  audio.currentTime = timeToSeek;
-}, false);
-
-//click volume slider to change volume
-const volumeSlider = audioPlayer.querySelector(".controls .volume-slider");
-volumeSlider.addEventListener('click', e => {
-  const sliderWidth = window.getComputedStyle(volumeSlider).width;
-  const newVolume = e.offsetX / parseInt(sliderWidth);
-  audio.volume = newVolume;
-  audioPlayer.querySelector(".controls .volume-percentage").style.width = newVolume * 100 + '%';
-}, false)
-
-//check audio percentage and update time accordingly
-setInterval(() => {
-  const progressBar = audioPlayer.querySelector(".progress");
-  progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
-  audioPlayer.querySelector(".time .current").textContent = getTimeCodeFromNum(
-    audio.currentTime
-  );
-}, 500);
-
-//toggle between playing and pausing on button click
-const playBtn = audioPlayer.querySelector(".controls .toggle-play");
-playBtn.addEventListener(
-  "click",
-  () => {
-    if (audio.paused) {
-      playBtn.classList.remove("play");
-      playBtn.classList.add("pause");
-      audio.play();
-    } else {
-      playBtn.classList.remove("pause");
-      playBtn.classList.add("play");
-      audio.pause();
-    }
-  },
-  false
-);
-
-audioPlayer.querySelector(".volume-button").addEventListener("click", () => {
-  const volumeEl = audioPlayer.querySelector(".volume-container .volume");
-  audio.muted = !audio.muted;
-  if (audio.muted) {
-    volumeEl.classList.remove("icono-volumeMedium");
-    volumeEl.classList.add("icono-volumeMute");
-  } else {
-    volumeEl.classList.add("icono-volumeMedium");
-    volumeEl.classList.remove("icono-volumeMute");
-  }
-});
-
-//turn 128 seconds into 2:08
 function getTimeCodeFromNum(num) {
-  let seconds = parseInt(num);
-  let minutes = parseInt(seconds / 60);
-  seconds -= minutes * 60;
-  const hours = parseInt(minutes / 60);
-  minutes -= hours * 60;
+    let seconds = parseInt(num);
+    let minutes = parseInt(seconds / 60);
+    seconds -= minutes * 60;
+    const hours = parseInt(minutes / 60);
+    minutes -= hours * 60;
 
-  if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
-  return `${String(hours).padStart(2, 0)}:${minutes}:${String(
-    seconds % 60
-  ).padStart(2, 0)}`;
+    if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, "0")}`;
+    return `${String(hours).padStart(2, "0")}:${minutes}:${String(seconds % 60).padStart(2, "0")}`;
 }
 
+const audioPlayers = document.querySelectorAll(".player");
 
+audioPlayers.forEach((player) => {
+    const src = player.dataset.src || "mp3/NLT.wav"; // fallback falls kein data-src
+    const audio = new Audio(src);
+
+    const playBtn = player.querySelector(".toggle-play");
+    const timeline = player.querySelector(".timeline");
+    const progressBar = player.querySelector(".progress");
+    const currentTimeElem = player.querySelector(".time .current");
+    const lengthElem = player.querySelector(".time .length");
+
+    audio.volume = 0.75;
+
+    audio.addEventListener("loadeddata", () => {
+        lengthElem.textContent = getTimeCodeFromNum(audio.duration);
+    });
+
+    // Play/Pause
+    playBtn.addEventListener("click", () => {
+        // optional: andere Player pausieren
+        audioPlayers.forEach(p => {
+            if (p !== player) {
+                const otherAudio = p.audioRef;
+                if (otherAudio && !otherAudio.paused) {
+                    otherAudio.pause();
+                    p.querySelector(".toggle-play").classList.remove("pause");
+                    p.querySelector(".toggle-play").classList.add("play");
+                }
+            }
+        });
+
+        if (audio.paused) {
+            playBtn.classList.remove("play");
+            playBtn.classList.add("pause");
+            audio.play();
+        } else {
+            playBtn.classList.remove("pause");
+            playBtn.classList.add("play");
+            audio.pause();
+        }
+    });
+
+    // Timeline klick
+    timeline.addEventListener("click", e => {
+        const timelineWidth = window.getComputedStyle(timeline).width;
+        const timeToSeek = (e.offsetX / parseInt(timelineWidth)) * audio.duration;
+        audio.currentTime = timeToSeek;
+    });
+
+    // Fortschritt
+    setInterval(() => {
+        if (!audio.duration) return;
+        progressBar.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+        currentTimeElem.textContent = getTimeCodeFromNum(audio.currentTime);
+    }, 500);
+
+    // Audio-Referenz speichern
+    player.audioRef = audio;
+});
 
 document.addEventListener("DOMContentLoaded", () => {
-	const sections = document.querySelectorAll(".content");
+    const sections = document.querySelectorAll(".content");
 
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-			if(entry.isIntersecting){
-				entry.target.classList.add("visible");
-			} else {
-				entry.target.classList.remove("visible");
-			}
-		});
-	}, {
-		threshold: 0.1
-	});
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            } else {
+                entry.target.classList.remove("visible");
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
 
-	sections.forEach(section => observer.observe(section));
+    sections.forEach(section => observer.observe(section));
 
-	sections.forEach(section => {
-		if(section.getBoundingClientRect().top < window.innerHeight){
-			section.classList.add("visible");
-		}
-	});
+    sections.forEach(section => {
+        if (section.getBoundingClientRect().top < window.innerHeight) {
+            section.classList.add("visible");
+        }
+    });
 });
