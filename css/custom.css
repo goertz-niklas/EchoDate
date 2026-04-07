@@ -200,6 +200,7 @@ a{
 		width: 100%;
 		position: relative;
 		cursor: pointer;
+        height: 6px;
 
 		.progress {
 			background: #E09F3F;
