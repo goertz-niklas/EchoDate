@@ -4,10 +4,8 @@
 }
 
 body{
-    background-image: url(../img/mat.png), url(../img/background.svg), url(../img/fibers.avif);
+    background-image: url(../img/background.jpg);
     background-size: 600px;
-    background-color: #9F2B2B;
-    background-blend-mode: multiply;
 }
 
 a{
