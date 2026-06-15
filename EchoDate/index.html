@@ -98,16 +98,25 @@
         function SwitchContent(contentIndex){
             switch(contentIndex){
                 case 0:
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[1].classList = "";
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[2].classList = "";
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[0].classList.add("active");
                     document.getElementById("home").style.display = "block";
                     document.getElementById("music").style.display = "none";
                     document.getElementById("about").style.display = "none";
                     break;
                 case 1:
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[0].classList = "";
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[2].classList = "";
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[1].classList.add("active");
                     document.getElementById("home").style.display = "none";
                     document.getElementById("music").style.display = "block";
                     document.getElementById("about").style.display = "none";
                     break;
                 case 2:
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[0].classList = "";
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[1].classList = "";
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[2].classList.add("active");
                     document.getElementById("home").style.display = "none";
                     document.getElementById("music").style.display = "none";
                     document.getElementById("about").style.display = "block";
