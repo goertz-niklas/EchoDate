@@ -1,0 +1,214 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body{
+    background:#040a1f;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar{
+    width: 100%;
+    height: 100px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    gap: 50px;
+}
+
+ul li a {
+    display: block;
+    color: white;
+    height:100px;
+    padding-left:20px;
+    padding-right:20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+    text-decoration-style: line;
+    text-decoration-color: transparent;
+    transition: 300ms;
+}
+
+ul li a:hover {
+    color: #dc8cfd;
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+    text-decoration-style: wavy;
+    text-decoration-color: white;
+    transition: 300ms;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    padding-bottom: 40px;
+}
+
+.rose{
+    background-image: url(img/rose.svg);
+    height:60px;
+    width:60px;
+    background-size: 60px;
+    transition: 300ms;
+}
+
+.rose:hover{
+    background-image: url(img/rosecolor.svg);
+    height:60px;
+    width:60px;
+    background-size: 60px;
+    transition: 300ms;
+}
+
+.footer-navbar{
+    color: #03346a;
+    text-align: center;
+    font-family: sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-navbar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    gap: 0px;
+}
+
+.footer-navbar ul li a {
+    display: block;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    height: 20px;
+
+    border-bottom: 3px solid transparent;
+    padding-bottom: 4px;
+    transition: 300ms;
+}
+
+.footer-navbar ul li a:hover {
+    border-bottom: 3px solid #dc8cfd;
+    padding-bottom: 4px;
+    transition: 300ms;
+}
+
+/*
+.active {
+    background: #040A1F;
+    background: linear-gradient(0deg,rgba(4, 10, 31, 1) 9%, rgba(204, 130, 236, 1) 33%, rgba(220, 140, 253, 1) 100%);
+}
+*/
+
+.active{
+    background: #033274;
+    /*
+    box-shadow: 0px 0px 100px #116ae32e;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    corner-shape: notch;
+    */
+}
+
+.active a {
+    color: black;
+}
+
+.active:hover a {
+    color: black;
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+    text-decoration-style: wavy;
+}
+
+.header-image img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    display: block;
+    filter: hue-rotate(234deg);
+    position: relative;
+}
+
+.logo-image img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    display: block;
+    margin-top:-50px;
+    position: relative;
+    z-index:2;
+}
+
+.border-box {
+    border: 6px solid #04102c;
+    margin:50px;
+    padding:50px;
+    border-radius: 30px;
+    corner-shape: notch;
+    background-image: url(https://images.unsplash.com/photo-1530533718754-001d2668365a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: bottom;
+    min-height:556px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 0px 100px #116ae32e;
+}
+
+.widgets{
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.about{
+    color: white;
+    font-family: sans-serif;
+    max-width: 500px;
+    text-align: center;
+    margin: 0 auto;
+    letter-spacing: 30%;
+    line-height: 2;
+}
+
+
+@media screen and (max-width: 500px) {
+    .border-box {
+        margin: 0px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    ul {
+        gap: 20px;
+    }
+}
