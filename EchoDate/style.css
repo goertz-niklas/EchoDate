@@ -8,6 +8,7 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
 }
 
 .navbar{
@@ -41,10 +42,11 @@ ul li a {
     text-decoration-style: line;
     text-decoration-color: transparent;
     transition: 300ms;
+
+    text-shadow: 0px 0px 10px #ffffff;
 }
 
 ul li a:hover {
-    color: #dc8cfd;
     text-decoration: line-through;
     text-decoration-thickness: 3px;
     text-decoration-style: wavy;
@@ -116,29 +118,13 @@ footer {
     transition: 300ms;
 }
 
-/*
-.active {
-    background: #040A1F;
-    background: linear-gradient(0deg,rgba(4, 10, 31, 1) 9%, rgba(204, 130, 236, 1) 33%, rgba(220, 140, 253, 1) 100%);
-}
-*/
-
-.active{
-    background: #033274;
-    /*
-    box-shadow: 0px 0px 100px #116ae32e;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    corner-shape: notch;
-    */
-}
-
 .active a {
-    color: black;
+    color: #db8cfb;
+    text-shadow: 0px 0px 10px #c11515;
 }
 
 .active:hover a {
-    color: black;
+    color: #db8cfb;
     text-decoration: line-through;
     text-decoration-thickness: 3px;
     text-decoration-style: wavy;
@@ -163,21 +149,66 @@ footer {
     z-index:2;
 }
 
+.card-wrap {
+    position: relative;
+    margin: 50px;
+}
+
 .border-box {
-    border: 6px solid #04102c;
-    margin:50px;
+    position: relative;
     padding:50px;
-    border-radius: 30px;
-    corner-shape: notch;
-    background-image: url(https://images.unsplash.com/photo-1530533718754-001d2668365a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    background-size: cover;
-    background-position: bottom;
-    min-height:556px;
+    z-index:1;
+    height: 560px;
+}
+
+.border-box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: url("https://images.unsplash.com/photo-1530533718754-001d2668365a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") bottom/cover;
+    border: 6px solid transparent;
+
+    --notch: 50px;
+
+    clip-path: polygon(
+        0 var(--notch),
+        var(--notch) var(--notch),
+        var(--notch) 0,
+
+        calc(100% - var(--notch)) 0,
+        calc(100% - var(--notch)) var(--notch),
+        100% var(--notch),
+
+        100% calc(100% - var(--notch)),
+        calc(100% - var(--notch)) calc(100% - var(--notch)),
+        calc(100% - var(--notch)) 100%,
+
+        var(--notch) 100%,
+        var(--notch) calc(100% - var(--notch)),
+        0 calc(100% - var(--notch))
+    );
+
+    z-index: -1;
+}
+
+.shadow {
+    position: absolute;
+    inset: 0px;
+    z-index: 0;
+    border-radius: 200px;
+    box-shadow: 0 0 120px #116ae366;
+}
+
+.dark{
+    width: 100%;
+    min-height: 556px;
+    background: #0000007a;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0px 0px 100px #116ae32e;
+    box-shadow: 0px 0px 50px #000000;
 }
 
 .widgets{
@@ -196,19 +227,55 @@ footer {
     margin: 0 auto;
     letter-spacing: 30%;
     line-height: 2;
+    text-shadow: 0px 0px 10px #ffffff;
 }
 
+.about span{
+    background-color: #00000063;
+    box-shadow: 0px 0px 10px black;
+}
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 770px) {
+    .card-wrap {
+        margin: 6px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
     .border-box {
-        margin: 0px;
         padding-top: 50px;
         padding-bottom: 50px;
         padding-left: 10px;
         padding-right: 10px;
     }
 
+    .border-box::after {
+     --notch: 20px;
+
+        clip-path: polygon(
+            0 var(--notch),
+            var(--notch) var(--notch),
+            var(--notch) 0,
+
+            calc(100% - var(--notch)) 0,
+            calc(100% - var(--notch)) var(--notch),
+            100% var(--notch),
+
+            100% calc(100% - var(--notch)),
+            calc(100% - var(--notch)) calc(100% - var(--notch)),
+            calc(100% - var(--notch)) 100%,
+
+            var(--notch) 100%,
+            var(--notch) calc(100% - var(--notch)),
+            0 calc(100% - var(--notch))
+        );
+    }
+
     ul {
         gap: 20px;
+    }
+
+    .shadow {
+        
     }
 }
