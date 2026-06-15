@@ -65,7 +65,18 @@
         </ul>    
     </div>
     </footer>
+    <script>
+        const degrees = [0, 99, 54, 166];
 
+        function randomHue() {
+        const randomIndex = Math.floor(Math.random() * degrees.length);
+        const value = degrees[randomIndex];
+        
+        document.documentElement.style.filter = `hue-rotate(${value}deg)`;
+        }
+
+        randomHue();
+    </script>
 
   </body>
 </html>
