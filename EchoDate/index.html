@@ -18,9 +18,9 @@
     <main>
         <div class="navbar">
             <ul>
-            <li class="active"><a href="index.html">HOME</a></li>
-            <li><a href="music.html">MUSIC</a></li>
-            <li><a href="about.html">ABOUT</a></li>
+                <li class="active"><a href="#" onclick="SwitchContent(0);">HOME</a></li>
+                <li><a href="#" onclick="SwitchContent(1);">MUSIC</a></li>
+                <li><a href="#" onclick="SwitchContent(2);">ABOUT</a></li>
             </ul>    
         </div>
 
@@ -28,13 +28,38 @@
             <div class="shadow"></div>
 
             <div class="border-box">
-                <div class="header-image">
-                    <img src="img/band-image.png" alt="">
+
+                <!-- CONTENT -->
+                <div id="home">
+                    <div class="header-image">
+                        <img src="img/band-image.png" alt="">
+                    </div>
+
+                    <div class="logo-image">
+                        <img src="img/logo.svg" alt="">
+                    </div>
                 </div>
 
-                <div class="logo-image">
-                    <img src="img/logo.svg" alt="">
+                <div id="music">
+                    <div class="widgets">
+                        <iframe class="test" data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6BZWKF6GUgf91G5gVhMRaZ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe class="test" data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6BZWKF6GUgf91G5gVhMRaZ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe class="test" data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6BZWKF6GUgf91G5gVhMRaZ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
                 </div>
+
+                <div id="about">
+                    <div class="dark">
+                        <div class="about">
+                            <span>
+                                <span class="brandColor"><b><u>ECHØ DATE</u></b></span>
+                                    is an indie rock band from western Germany. Their sound blends diverse influences into a melancholic and atmospheric soundscape. Reflective lyrics meet melodic basslines, driving drums, and textured guitars, creating a dynamic yet cohesive style. Shaped by each member’s individuality, their songs evolve organically, drifting into new directions while maintaining a distinct emotional core.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- CONTENT -->
+                 
             </div>
         </div>     
         
@@ -42,7 +67,7 @@
     
     <footer>
     <div class="footer-navbar">
-        <div class="rose"></div>
+        <div class="rose" onclick="SwitchTheme();"></div>
         © 2026 ECHO DATE - ALL RIGHTS RESERVED
 
         <ul>
@@ -69,12 +94,40 @@
     </footer>
         
     <script>
-    const themes = ["theme1", "theme2"];
-        const randomTheme = themes[Math.floor(Math.random() * themes.length)];
 
-        if (randomTheme !== "theme1") {
-        document.documentElement.classList.add(randomTheme);
-    }
+        function SwitchContent(contentIndex){
+            switch(contentIndex){
+                case 0:
+                    document.getElementById("home").style.display = "block";
+                    document.getElementById("music").style.display = "none";
+                    document.getElementById("about").style.display = "none";
+                    break;
+                case 1:
+                    document.getElementById("home").style.display = "none";
+                    document.getElementById("music").style.display = "block";
+                    document.getElementById("about").style.display = "none";
+                    break;
+                case 2:
+                    document.getElementById("home").style.display = "none";
+                    document.getElementById("music").style.display = "none";
+                    document.getElementById("about").style.display = "block";
+                    break;
+            }
+        }
+
+        const themes = ["theme1", "theme2"];
+        let currentTheme = 0;
+
+        function SwitchTheme(){
+            currentTheme++;
+
+            if(currentTheme > themes.length-1){
+                currentTheme = 0;
+            }
+            document.documentElement.classList = "";
+            document.documentElement.classList.add(themes[currentTheme]);
+        }
+
     </script>
 
 
