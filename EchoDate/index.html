@@ -68,19 +68,15 @@
     </div>
     </footer>
         
-
     <script>
-        const degrees = [0, 99, 54, 166];
+    const themes = ["theme1", "theme2"];
+        const randomTheme = themes[Math.floor(Math.random() * themes.length)];
 
-        function randomHue() {
-        const randomIndex = Math.floor(Math.random() * degrees.length);
-        const value = degrees[randomIndex];
-        
-        document.documentElement.style.filter = `hue-rotate(${value}deg)`;
-        }
-
-        randomHue();
+        if (randomTheme !== "theme1") {
+        document.documentElement.classList.add(randomTheme);
+    }
     </script>
+
 
   </body>
 </html>

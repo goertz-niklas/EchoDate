@@ -31,7 +31,7 @@
         <div class="dark">
 
       <div class="about"><span>
-        <b><u>ECHØ DATE</u></b>
+        <span class="brandColor"><b><u>ECHØ DATE</u></b></span>
 is an indie rock band from western Germany. Their sound blends diverse influences into a melancholic and atmospheric soundscape. Reflective lyrics meet melodic basslines, driving drums, and textured guitars, creating a dynamic yet cohesive style. Shaped by each member’s individuality, their songs evolve organically, drifting into new directions while maintaining a distinct emotional core.
       </span></div>
     </div>
@@ -65,20 +65,16 @@ is an indie rock band from western Germany. Their sound blends diverse influence
             </a></li>
         </ul>    
     </div>
-    </footer>
-    
-       <script>
-        const degrees = [0, 99, 54, 166];
 
-        function randomHue() {
-        const randomIndex = Math.floor(Math.random() * degrees.length);
-        const value = degrees[randomIndex];
-        
-        document.documentElement.style.filter = `hue-rotate(${value}deg)`;
-        }
+    <script>
+    const themes = ["theme1", "theme2"];
+        const randomTheme = themes[Math.floor(Math.random() * themes.length)];
 
-        randomHue();
+        if (randomTheme !== "theme1") {
+        document.documentElement.classList.add(randomTheme);
+    }
     </script>
+
 
   </body>
 </html>
