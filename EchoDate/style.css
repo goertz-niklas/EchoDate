@@ -18,6 +18,42 @@
   --hueImg: hue-rotate(234deg);
 }
 
+:root.theme3 {
+    --color1: #fff;
+    --color2: #f2d7a8;
+    --color3: center / cover no-repeat url(https://images.unsplash.com/photo-1548266652-99cf27701ced?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    --color4: transparent;
+    --backg: none;
+    --hueMain: sepia(1);
+    --hueImg: sepia(1);
+
+    .test{
+        box-shadow: 0px 0px 15px var(--color4);
+        border: 2px solid white;
+    }
+
+    .dark{
+        background: none;
+        box-shadow: none;
+    }
+
+    .about span{
+        background-color: #ffffff;
+        color: black;
+        box-shadow: none;
+        padding: 5px;
+    }
+
+    .brandColor {
+        color: #458fa2!important;
+        text-shadow: none;
+    }
+
+    .rose{
+        filter: brightness(200);
+    }
+}
+
 
 html, body {
     height: 100%;
@@ -250,6 +286,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     box-shadow: 0px 0px 50px #000000;
+    border-radius: 99%;
 }
 
 .widgets{
