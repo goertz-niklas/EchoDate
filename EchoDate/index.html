@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ECHO DATE</title>
     <link rel="stylesheet" href="style.css">
-
     <link rel="icon" type="image/png" href="img/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
     <link rel="shortcut icon" href="img/favicon.ico" />
@@ -21,7 +20,10 @@
                 <li class="active"><a href="#" onclick="SwitchContent(0);">HOME</a></li>
                 <li><a href="#" onclick="SwitchContent(1);">MUSIC</a></li>
                 <li><a href="#" onclick="SwitchContent(2);">ABOUT</a></li>
-            </ul>    
+                <li><a href="mailto:info@echodate.de">CONTACT</a></li>
+                <li><a href="#" onclick="SwitchContent(3);">GALLERY</a></li>
+                <!--<li><a href="#">SHOP</a></li>-->
+            </ul>
         </div>
 
         <div class="card-wrap">
@@ -43,8 +45,28 @@
                 <div id="music">
                     <div class="widgets">
                         <iframe class="test" data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6BZWKF6GUgf91G5gVhMRaZ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                         
+                        <!--
+                        <div class="fake-player test">
+                            <div class="wrap-img">
+                                <img class="fake-player-cover" src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02fa5a47400958e77a269c79ca">
+                                    <div class="wrap">
+                                        <p class="title">Not Like That</p>
+                                        <p class="artist">ECHO DATE</p>
+                                    </div>
+                            </div>
+
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="#fff">
+                                    <path d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12m8.75-4.567a.5.5 0 0 0-.75.433v8.268a.5.5 0 0 0 .75.433l7.161-4.134a.5.5 0 0 0 0-.866z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
                         <iframe class="test" data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6BZWKF6GUgf91G5gVhMRaZ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                         <iframe class="test" data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6BZWKF6GUgf91G5gVhMRaZ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe class="test" data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6BZWKF6GUgf91G5gVhMRaZ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        -->
                     </div>
                 </div>
 
@@ -55,6 +77,24 @@
                                 <span class="brandColor"><b><u>ECHØ DATE</u></b></span>
                                     is an indie rock band from western Germany. Their sound blends diverse influences into a melancholic and atmospheric soundscape. Reflective lyrics meet melodic basslines, driving drums, and textured guitars, creating a dynamic yet cohesive style. Shaped by each member’s individuality, their songs evolve organically, drifting into new directions while maintaining a distinct emotional core.
                             </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="gallery">
+                    <div class="dark">
+                        <div class="slideshow-container">
+                            <a class="prev" onclick="plusSlides(-1)">❮</a>
+
+                            <div class="mySlides fade">
+                                <img src="img/card-2.png" class="slider-image">
+                            </div>
+
+                            <div class="mySlides fade">
+                                <img src="img/luibass.jpeg" class="slider-image">
+                            </div>
+ 
+                            <a class="next" onclick="plusSlides(1)">❯</a>
                         </div>
                     </div>
                 </div>
@@ -98,28 +138,44 @@
         function SwitchContent(contentIndex){
             switch(contentIndex){
                 case 0:
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[0].classList.add("active");
                     document.getElementsByClassName("navbar")[0].childNodes[1].children[1].classList = "";
                     document.getElementsByClassName("navbar")[0].childNodes[1].children[2].classList = "";
-                    document.getElementsByClassName("navbar")[0].childNodes[1].children[0].classList.add("active");
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[4].classList = "";
                     document.getElementById("home").style.display = "block";
                     document.getElementById("music").style.display = "none";
                     document.getElementById("about").style.display = "none";
+                    document.getElementById("gallery").style.display = "none";
                     break;
                 case 1:
                     document.getElementsByClassName("navbar")[0].childNodes[1].children[0].classList = "";
-                    document.getElementsByClassName("navbar")[0].childNodes[1].children[2].classList = "";
                     document.getElementsByClassName("navbar")[0].childNodes[1].children[1].classList.add("active");
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[2].classList = "";
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[4].classList = "";
                     document.getElementById("home").style.display = "none";
                     document.getElementById("music").style.display = "block";
                     document.getElementById("about").style.display = "none";
+                    document.getElementById("gallery").style.display = "none";
                     break;
                 case 2:
                     document.getElementsByClassName("navbar")[0].childNodes[1].children[0].classList = "";
                     document.getElementsByClassName("navbar")[0].childNodes[1].children[1].classList = "";
                     document.getElementsByClassName("navbar")[0].childNodes[1].children[2].classList.add("active");
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[4].classList = "";
                     document.getElementById("home").style.display = "none";
                     document.getElementById("music").style.display = "none";
                     document.getElementById("about").style.display = "block";
+                    document.getElementById("gallery").style.display = "none";
+                    break;
+                case 3:
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[0].classList = "";
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[1].classList = "";
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[2].classList = "";
+                    document.getElementsByClassName("navbar")[0].childNodes[1].children[4].classList.add("active");
+                    document.getElementById("home").style.display = "none";
+                    document.getElementById("music").style.display = "none";
+                    document.getElementById("about").style.display = "none";
+                    document.getElementById("gallery").style.display = "block";
                     break;
             }
         }
@@ -138,6 +194,32 @@
         }
 
     </script>
+
+
+    <script>
+        let slideIndex = 1;
+            showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";  
+        }
+    </script>
+
 
 
   </body>
